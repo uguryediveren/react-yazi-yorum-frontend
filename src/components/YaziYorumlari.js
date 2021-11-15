@@ -8,7 +8,7 @@ const YaziYorumlari = (props) => {
 
     return (
         <>
-            <YorumListesi yorumlar={props.yorumlar} />
+            <YorumListesi id={props.id} yorumlar={props.yorumlar} />
             <YorumFormu yorum={props.yorum} handleSubmit={props.handleSubmit} />
         </>
     )

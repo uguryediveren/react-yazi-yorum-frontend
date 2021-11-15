@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import YaziYorumlari from "./YaziYorumlari";
 import { api } from "../api";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 
 
@@ -27,17 +29,16 @@ const YaziDetayi = (props) => {
     }
 
 
-    console.log("yorumy: ", yorum)
 
 
     useEffect(() => {
         axios.all([api().get(`/posts/${id}`), api().get(`/posts/${id}/comments`)])
             .then(response => {
-                console.log("response",response[0].data);
+                console.log("response", response[0].data);
                 setYaziDetayi(response[0].data);
                 setYorumlar(response[1].data);
             }).catch(err => { console.log(err); })
-    }, []);
+    }, [id]);
 
 
     return (
@@ -45,7 +46,11 @@ const YaziDetayi = (props) => {
             <h2 className="ui header">{yaziDetayi.title}</h2>
             <p>{yaziDetayi.content}</p>
             <p>{yaziDetayi.created_at}</p>
-            <YaziYorumlari yorumlar={yorumlar} yorum={yorum} handleSubmit={handleCommentSubmit} />
+            <div className="ui buttons">
+                <Link to={`/posts/${id}/edit`} className="ui blue button">Düzenle</Link>
+                <button className="ui red button">Sil</button>
+            </div>
+            <YaziYorumlari id={id} yorumlar={yorumlar} yorum={yorum} handleSubmit={handleCommentSubmit} />
         </React.Fragment> /* </> */
     );
 }
