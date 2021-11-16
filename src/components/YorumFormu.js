@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
+
+
 
 const YORUM_BASLANGIC = { display_name: "", body: "" }
 
@@ -24,9 +27,12 @@ const YorumFormu = (props) => {
             </div> <br></br>
             <textarea name="body" onChange={handleOnChange} value={yorum.body} placeholder="Yorumunuz..." rows="3"></textarea>
             <button className="ui blue button" type="submit">Yorum Gönder</button>
+             <button  onClick={()=>props.history.push(`/`)} className="ui button">
+                İptal
+            </button>
         </form>
 
     </>);
 }
 
-export default YorumFormu;
+export default withRouter(YorumFormu);
