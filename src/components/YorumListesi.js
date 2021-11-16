@@ -19,7 +19,7 @@ const YorumListesi = (props) => {
                     <div className="item">
                         <img className="ui avatar image" src={`https://picsum.photos/id/${Math.floor(yorum.id / 10)}/200/300`} alt="avatar" />
                         <div className="content">
-                            <a className="header">{yorum.display_name}</a>
+                            <div className="header">{yorum.display_name}</div>
                             <div className="description">{yorum.body}</div>
                             <Link to={{ pathname: `/posts/${props.id}/editcomment/${yorum.id}`, state: { yorum: yorum.body, name: yorum.display_name, postId: props.id } }} className="mini ui blue button">Düzenle</Link>
                             <SilModalYorum yaziDetayi={props.yaziDetayi} yorumId={yorum.id} yorum={props.yorumlar}/>
