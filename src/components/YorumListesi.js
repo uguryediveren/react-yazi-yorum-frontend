@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import SilModalYorum from "./SilModalYorum";
+
 
 
 
 const YorumListesi = (props) => {
 
+
+    // yorumları idye göre sortladım. çünkü her yorum güncellemesinde güncellenen yorum dizinin en sonuna gönderiyordu api tasarımı yüzünden
+    props.yorumlar.sort((a, b) => (a.id > b.id) ? 1 : -1)
 
     return (<>
         <h3>Yorumlar</h3>
@@ -17,7 +22,7 @@ const YorumListesi = (props) => {
                             <a className="header">{yorum.display_name}</a>
                             <div className="description">{yorum.body}</div>
                             <Link to={{ pathname: `/posts/${props.id}/editcomment/${yorum.id}`, state: { yorum: yorum.body, name: yorum.display_name, postId: props.id } }} className="mini ui blue button">Düzenle</Link>
-                            <button className="mini ui red button">Sil</button>
+                            <SilModalYorum yaziDetayi={props.yaziDetayi} yorumId={yorum.id} yorum={props.yorumlar}/>
                         </div>
                     </div>
 

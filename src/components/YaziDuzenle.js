@@ -18,7 +18,7 @@ const YaziDuzenle = (props) => {
 
     return (<>
         <h1>Yazı Düzenleme Formu</h1>
-        <YaziFormu edit={edit} />
+        <YaziFormu deleteId={id} cancelId={id} edit={edit} id={id} />
     </>
     )
 }

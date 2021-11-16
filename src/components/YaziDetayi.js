@@ -3,9 +3,7 @@ import YaziYorumlari from "./YaziYorumlari";
 import { api } from "../api";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-
-
+import SilModalYazi from "./SilModalYazi";
 
 
 
@@ -48,9 +46,9 @@ const YaziDetayi = (props) => {
             <p>{yaziDetayi.created_at}</p>
             <div className="ui buttons">
                 <Link to={`/posts/${id}/edit`} className="ui blue button">Düzenle</Link>
-                <button className="ui red button">Sil</button>
+                <SilModalYazi yazi={yaziDetayi}/>
             </div>
-            <YaziYorumlari id={id} yorumlar={yorumlar} yorum={yorum} handleSubmit={handleCommentSubmit} />
+            <YaziYorumlari yaziDetayi={yaziDetayi} id={id} yorumlar={yorumlar} yorum={yorum} handleSubmit={handleCommentSubmit} />
         </React.Fragment> /* </> */
     );
 }

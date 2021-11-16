@@ -13,7 +13,7 @@ function App() {
         <header></header>
         <div className="ui raised very padded text container segment">
           <Route exact path="/" component={YaziListesi} />
-          <Route exact path="/posts/:id" component={YaziDetayi} />
+          <Route exact  path="/posts/:id" component={YaziDetayi} />
           <Route path="/yaziekle" component={YaziEkle} />
           <Route path="/posts/:id/edit" component={YaziDuzenle} />
           <Route path="/posts/:id/editcomment/:id" component={YorumDuzenle} />
