@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, useParams } from "react-router-dom";
 import { api } from "../api";
 
 
@@ -11,7 +11,9 @@ const YaziFormu = (props) => {
     const [error, setError] = useState("");
     const [buttonShow, setButtonShow] = useState(false);
 
-    console.log("yaziFormu_props", props);
+    const { id } = useParams();
+
+    console.log("yaziFormuid", id);
 
 
 
@@ -95,12 +97,11 @@ const YaziFormu = (props) => {
             <button disabled={buttonShow} onClick={onFormSubmit} className="ui primary button">
                 Gönder
             </button>
-            {props.cancelId && <button onClick={() => props.history.push(`/posts/${props.cancelId}`)} className="ui button">
+            {props.cancelId ? (<button onClick={() => props.history.push(`/posts/${props.cancelId}`)} className="ui button">
+                İptal
+            </button>) : <button onClick={() => props.history.push(`/`)} className="ui button">
                 İptal
             </button>}
-            <button  onClick={()=>props.history.push(`/`)} className="ui button">
-                İptal
-            </button>
         </div>
     </>
     )

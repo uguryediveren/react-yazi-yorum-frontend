@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import YaziYorumlari from "./YaziYorumlari";
 import { api } from "../api";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams,useHistory } from "react-router-dom";
 import SilModalYazi from "./SilModalYazi";
 
 
@@ -10,10 +10,16 @@ import SilModalYazi from "./SilModalYazi";
 const YORUM_BASLANGIC = { display_name: "", body: "" }
 
 const YaziDetayi = (props) => {
-    const { id } = props.match.params;
+    const { id } = useParams();
     const [yaziDetayi, setYaziDetayi] = useState({});
     const [yorumlar, setYorumlar] = useState([]);
     const [yorum, setYorum] = useState(YORUM_BASLANGIC);
+
+    // const history=useHistory();
+    // console.log(history);
+
+  
+
 
 
     const handleCommentSubmit = (event, yorum) => {
@@ -46,7 +52,7 @@ const YaziDetayi = (props) => {
             <p>{yaziDetayi.created_at}</p>
             <div className="ui buttons">
                 <Link to={`/posts/${id}/edit`} className="ui blue button">Düzenle</Link>
-                <SilModalYazi yazi={yaziDetayi}/>
+                <SilModalYazi yazi={yaziDetayi} />
             </div>
             <YaziYorumlari yaziDetayi={yaziDetayi} id={id} yorumlar={yorumlar} yorum={yorum} handleSubmit={handleCommentSubmit} />
         </React.Fragment> /* </> */
