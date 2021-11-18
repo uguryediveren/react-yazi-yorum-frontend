@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import YaziYorumlari from "./YaziYorumlari";
 import { api } from "../api";
 import axios from "axios";
-import { Link, useParams,useHistory } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SilModalYazi from "./SilModalYazi";
 
 
@@ -15,10 +15,8 @@ const YaziDetayi = (props) => {
     const [yorumlar, setYorumlar] = useState([]);
     const [yorum, setYorum] = useState(YORUM_BASLANGIC);
 
-    // const history=useHistory();
-    // console.log(history);
 
-  
+
 
 
 

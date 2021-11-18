@@ -17,7 +17,7 @@ const YorumListesi = (props) => {
             return (
                 <div key={yorum.id} className="ui relaxed list">
                     <div className="item">
-                        <img className="ui avatar image" src={`https://picsum.photos/id/${Math.floor(yorum.id / 10)}/200/300`} alt="avatar" />
+                        <img className="ui avatar image" src={`https://picsum.photos/id/${Math.floor(Math.random()*201)}/200/300`} alt="avatar" />
                         <div className="content">
                             <div className="header">{yorum.display_name}</div>
                             <div className="description">{yorum.body}</div>
